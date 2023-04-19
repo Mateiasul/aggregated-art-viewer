@@ -9615,7 +9615,7 @@ const SSRPage: FC = (props: any) => {
   const [nft, setNft] = React.useState();
 
   const foundationImgUrl = "https://f8n-production-collection-assets.imgix.net";
-  const handleOnClick = (nftArt) => {
+  const handleOnClick = (nftArt: any) => {
     setOpen(true);
     setNft(nftArt);
   };
@@ -9638,13 +9638,13 @@ const SSRPage: FC = (props: any) => {
           >
             <TransitionsModal
               isOpen={open}
-              modelData={nft}
+              modelData={nft ?? { image: "", createdAt: "", title: "" }}
               setOpen={setOpen}
             ></TransitionsModal>
             <Typography variant="h1">Dxl</Typography>
             <Grid2 lg={12} container columnSpacing={10} rowSpacing={20}>
-              {props.allPostsData.map((nftArt) => (
-                <Grid2 lg={4}>
+              {props.allPostsData.map((nftArt: any, i: any) => (
+                <Grid2 lg={4} key={i}>
                   <Card onClick={() => handleOnClick(nftArt)}>
                     <CardContent>
                       <Stack alignItems="center" spacing={3}>
@@ -9660,10 +9660,10 @@ const SSRPage: FC = (props: any) => {
                   </Card>
                 </Grid2>
               ))}
-              {foundationDXLStuff.map((nft) => {
+              {foundationDXLStuff.map((nft, i) => {
                 const imgSrc = foundationImgUrl + nft.assetPath;
                 return (
-                  <Grid2 lg={4}>
+                  <Grid2 lg={4} key={i}>
                     <Card>
                       <CardContent>
                         <Stack alignItems="center" spacing={3}>

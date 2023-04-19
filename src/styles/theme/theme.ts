@@ -4,7 +4,7 @@ import { createComponents } from "./create-components";
 import { createTypography } from "./create-typography";
 
 export function createTheme() {
-  const typography: Typography = createTypography();
+  const typography: any = createTypography();
   const components = createComponents();
 
   return createMuiTheme({

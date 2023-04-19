@@ -8,14 +8,28 @@ import Image from "next/image";
 import { Container, Stack, styled } from "@mui/material";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   outline: 0,
 };
 
-export default function TransitionsModal({ isOpen, modelData, setOpen }) {
+interface PropsInterface {
+  isOpen: any;
+  modelData: {
+    image: any;
+    title: any;
+    createdAt: any;
+  };
+  setOpen: any;
+}
+
+export default function TransitionsModal({
+  isOpen,
+  modelData,
+  setOpen,
+}: PropsInterface) {
   const handleClose = () => setOpen(false);
 
   const StyledModal = styled(Modal)`
